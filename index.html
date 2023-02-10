@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head> 
+    
+
+    <title>Document</title>
+
+<body>
+
+  <div data-role="page" id="home">
+
+
+    <div data-role="header" data-theme='a'>
+      <h1>My Recipe</h1>
+<div data-role="navbar" data-theme='b'>
+  <ul>
+    <li><a href="#home">Home Page</a></li>
+    <li><a href="#Load">Add Recipe</a></li>
+    <li><a href="#ListAll">List Pecipe</a></li>
+  </ul>
+</div>
+    </div>
+
+    <div data-role="content" data-theme='b'>
+      <div class="newFont">
+        <h2> My Collection of Recipes</h2>
+      </div>
+    </div>
+
+
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyrigtht 2020 by Ya Cai</h1>
+    </div>
+  </div>
+
+  <div data-role="page" id="details">
+  
+ 
+    <div data-role="header" data-theme='a'>
+      <h1>Here are the details</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Load">Add Recipe</a></li>
+          <li><a href="#ListAll">List Pecipe</a></li>
+  
+        </ul>
+      </div>
+    </div>
+
+    <div data-role="content" data-theme='c'>
+      <p> Here are the details</p>
+      <p id="oneFlavor"></p>
+      <p id="oneMenu"></p>
+      <p id="oneType"></p>
+      <p id="oneRecipe"></p>
+      <p id="oneTime"></p>
+      <p id="oneURL" hidden></p>
+      <input type="button" value="Trailer" id="trailer" />
+    </div>
+  
+
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyrigtht 2023 by Ya Cai</h1>
+    </div>
+  
+  </div>
+
+
+  <div data-role="page" id="Load">
+ 
+    <div data-role="header" data-theme='a'>
+      <h1>Add a Recipe</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Load">Add Recipe</a></li>
+          <li><a href="#ListAll">List Pecipe</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+
+  
+    <div data-role="content" data-theme='c'>
+      <div for ="selectFlavor">Select your flavor</div>
+      <select name ="selectFlavor" id="selectFlavor">
+        <option value="spicy">Spicy</option>
+        <option value="garlic">Garlic</option>
+        <option value="original">Original</option>
+      </select>
+
+      <div for ="selectMenu">Select your menu</div>
+      <select name ="selectMenu" id="selectMenu">
+        <option value="mexico">Mexico</option>
+        <option value="chinese">Chinese</option>
+        <option value="japanese">Japanese</option>
+      </select>
+
+      <div for ="veg">Are you vegetarian?</div>
+      <select name ="selectVeg" id="veg">
+        <option value="veg">Yes</option>
+        <option value="veg">No</option>
+      </select>
+
+      How long you want to spend on cooking? (15mins  30mins   60mins)
+      <input type="text" value="" id="youTime" />
+      Enter Your Name (Last name, First name)<br />
+      <input type="text" value="" id="youName" /> 
+  
+       
+        <div class="ui-field-contain">
+          <label for="selectRecipe">Select your recipe</label>
+          <select name="selectRecipe" id="selectRecipe">
+            <option value="tacos">Maxican Tacos</option>
+            <option value="noddles">Chinese Noddles</option>
+            <option value="udon">Japanese Udon</option>
+          </select>
+        </div>
+    
+    
+      <input type="button" value="Click To Add Recipe" id="buttonAdd" data-inline="true" />
+      <input type="button" value="Clear Data" id="buttonClear" data-inline="true" />
+    </div>
+
+    <!--   page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyrigtht 2023 by Ya Cai</h1>
+    </div>
+  </div>
+ 
+  <div data-role="page" id="ListAll">
+   
+    <div data-role="header" data-theme='a'>
+      <h1>My Recipes List</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Load">Add Recipes</a></li>
+          <li><a href="#ListAll">List Recipes</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+    <div data-role="content" data-theme='e'>
+      <p> Here are my Recipes</p>
+  
+      <div>
+        <ul id="RecipeListul"></ul>
+      </div>
+    
+      <input type="button" value="Sort By Flavor" id="buttonSortFlavor" data-inline="true" />
+      <input type="button" value="Sort By Menu" id="buttonSortMenu" data-inline="true" />
+    </div>
+
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyrigtht 2023 by Ya Cai</h1>
+    </div>
+  </div>
+  </div>
+  
+</body>
+
+</html>
