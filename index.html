@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src ="main.js"></script>
 </head> 
     
 
@@ -65,8 +66,8 @@
       <p id="oneType"></p>
       <p id="oneRecipe"></p>
       <p id="oneTime"></p>
-      <p id="oneURL" hidden></p>
-      <input type="button" value="Trailer" id="trailer" />
+      <p id="oneURL" hidden></p> 
+      <!-- <input type="button" value="Trailer" id="trailer" /> --> 
     </div>
   
 
@@ -108,8 +109,8 @@
         <option value="japanese">Japanese</option>
       </select>
 
-      <div for ="veg">Are you vegetarian?</div>
-      <select name ="selectVeg" id="veg">
+      <div for ="selectVeg">Are you vegetarian?</div>
+      <select name ="selectVeg" id="selectVeg">
         <option value="veg">Yes</option>
         <option value="veg">No</option>
       </select>
@@ -156,13 +157,14 @@
     
     <div data-role="content" data-theme='e'>
       <p> Here are my Recipes</p>
+        
   
       <div>
         <ul id="RecipeListul"></ul>
       </div>
     
-      <input type="button" value="Sort By Flavor" id="buttonSortFlavor" data-inline="true" />
-      <input type="button" value="Sort By Menu" id="buttonSortMenu" data-inline="true" />
+      <input type="button" value="Sort By Flavor" id="sortByFlavor" data-inline="true" />
+      <input type="button" value="Sort By Menu" id="sortByMenu" data-inline="true" />
     </div>
 
     <div data-role="footer" data-theme='b'>
