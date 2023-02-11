@@ -18,8 +18,8 @@ let selectedRecipe = "not selected";
 
 
 function toggle_visibility(id) {
-    var ul = document.getElementById('links');
-    var box = document.getElementById(id);
+    let ul = document.getElementById('links');
+    let box = document.getElementById(id);
     if(ul.style.display == 'none')
     {
         ul.style.display = 'block';
