@@ -15,7 +15,26 @@ foodArray.push(new foodObject(3, "Garlic", "Chinese", "Non-Veg", "Beef Noddles")
 
 let selectedRecipe = "not selected";
 
+
+
+function toggle_visibility(id) {
+    let ul = document.getElementById('links');
+    let box = document.getElementById(id);
+    if(ul.style.display == 'none')
+    {
+        ul.style.display = 'block';
+        box.style.display = 'block';
+    }
+    else
+    {
+        ul.style.display = 'none';
+        box.style.display = 'block';
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
+
 
 createList();
 document.getElementById("buttonAdd").addEventListener("click", function () {
@@ -24,19 +43,6 @@ let menu = document.getElementById("selectMenu").value;
 let type = document.getElementById("selectVeg").value;
 let recipe = document.getElementById("selectRecipe").value;
 let time = document.getElementById("youTime").value;
-
-
-// document.getElementById("detailsPage").addEventListener("click", function(event) {
-//     let localID = event.target.getAttribute("data-key");
-//     let selectedFood = foodArray[localID];
-    
-//     document.getElementById("flavorDetails").innerHTML = selectedFood.flavor;
-//     document.getElementById("menuDetails").innerHTML = selectedFood.menu;
-//     document.getElementById("typeDetails").innerHTML = selectedFood.type;
-//     document.getElementById("recipeDetails").innerHTML = selectedFood.recipe;
-//     document.getElementById("timeDetails").innerHTML = selectedFood.time;
-//   });
-
 
 foodArray.push(new foodObject(foodArray.length+1,flavor, menu, type, recipe, time));
     document.location.href = "index.html#ListAll";
@@ -60,9 +66,6 @@ document.getElementById("sortByMenu").addEventListener("click", function () {
     foodArray.sort(dynamicSort("Menu"));
     createList();
 });
-// document.getElementById("trailer").addEventListener("click", function () {
-//     window.open(document.getElementById("oneURL").innerHTML);
-// });
 
 });
 $(document).on("pagebeforeshow", "#ListAll", function (event) { 
@@ -70,33 +73,18 @@ $(document).on("pagebeforeshow", "#ListAll", function (event) {
 });
 
 $(document).on("pagebeforeshow", "#details", function (event) {   
+
     let localID = localStorage.getItem('param');  
   
-    
-  
     foodArray = JSON.parse(localStorage.getItem('foodArray'));  
-console.log(localID);
+
     document.getElementById("oneMenu").innerHTML = "The menu is: " + foodArray[localID - 1].Menu;
     document.getElementById("oneFlavor").innerHTML = "The flavor is: " + foodArray[localID - 1].Flavor;
     document.getElementById("oneType").innerHTML = "Type: " + foodArray[localID- 1].Type;
     document.getElementById("oneRecipe").innerHTML = "The recipe is: " + foodArray[localID- 1].Recipe;
     document.getElementById("oneTime").innerHTML = "the time is: " + foodArray[localID- 1].Time;
 
-// foodArray = JSON.parse(localStorage.getItem('foodArray'));  
 
-// $(document).on("change", "#selectMenu", function (event, ui) {
-//         selectedMenu = $('#selectMenu').val();
-//     });
-//     $(document).on("change", "#selectFlavor", function (event, ui) {
-//         selectedFlavor = $('#selectFlavor').val();
-//     });
-//     $(document).on("change", "#selectVeg", function (event, ui) {
-//         selectedVeg = $('#selectVeg').val();
-//     });
- 
-// $(document).on("change", "#selectRecipe", function (event, ui) {
-//     selectedRecipe = $('#selectRecipe').val();
-// });
 });
 
 function createList() {
@@ -125,6 +113,7 @@ function createList() {
     });
 });
 }
+
 function dynamicSort(property) {
     return function (a, b) {
         if (a[property] < b[property]) {
