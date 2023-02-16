@@ -63,14 +63,25 @@ document.getElementById("sortByMenu").addEventListener("click", function () {
 });
 
 });
+
+
 $(document).on("pagebeforeshow", "#ListAll", function (event) { 
     createList();
 });
+
 
 $(document).on("pagebeforeshow", "#details", function (event) {   
     let localParam = localStorage.getItem('param'); 
     let localID = GetArrayPointer(localParam); 
 
+
+    document.getElementById("delete").addEventListener("click", function () {
+        let localParam = localStorage.getItem('param');  
+        deleteMenu(localParam);
+        createList();  
+        document.location.href = "index.html#ListAll"; 
+    });
+    
     // let localID = localStorage.getItem('param');  
 //   need to have the details of each recipe first, then when you click the recipe ,the the computer knows where and what to get
     foodArray = JSON.parse(localStorage.getItem('foodArray'));  
