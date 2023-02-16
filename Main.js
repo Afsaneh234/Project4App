@@ -1,7 +1,7 @@
 let foodArray = [];
 
-let foodObject = function (pID, pFlavor, pMenu, pType, pRecipe, pTime) {
-    this.ID = pID;
+let foodObject = function (pFlavor, pMenu, pType, pRecipe, pTime) {
+    this.ID = Math.random().toString(16).slice(5);
     this.Flavor = pFlavor;
     this.Menu = pMenu;
     this.Type = pType;
@@ -9,13 +9,11 @@ let foodObject = function (pID, pFlavor, pMenu, pType, pRecipe, pTime) {
     this.Time = pTime;
 }
 
-foodArray.push(new foodObject(1,"Spicy","Mexico", "Non-Veg", "Tacos", "30mins" ));
-foodArray.push(new foodObject(2, "Original", "apanese", "veg", "Udon", "15mins"));
-foodArray.push(new foodObject(3, "Garlic", "Chinese", "Non-Veg", "Beef Noddles"));
+foodArray.push(new foodObject("Spicy","Mexican", "Non-Veg", "Tacos", "30mins" ));
+foodArray.push(new foodObject("Original", "Japanese", "veg", "Udon", "15mins"));
+foodArray.push(new foodObject("Garlic", "Chinese", "Non-Veg", "Beef Noddles"));
 
 let selectedRecipe = "not selected";
-
-
 
 function toggle_visibility(id) {
     let ul = document.getElementById('links');
@@ -32,9 +30,7 @@ function toggle_visibility(id) {
     }
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
-
 
 createList();
 document.getElementById("buttonAdd").addEventListener("click", function () {
@@ -56,7 +52,6 @@ document.getElementById("buttonClear").addEventListener("click", function () {
     document.getElementById("youTime").value = "";
 });
 
-
 document.getElementById("sortByFlavor").addEventListener("click", function () {
     foodArray.sort(dynamicSort("Flavor"));
     createList();
@@ -73,18 +68,18 @@ $(document).on("pagebeforeshow", "#ListAll", function (event) {
 });
 
 $(document).on("pagebeforeshow", "#details", function (event) {   
+    let localParam = localStorage.getItem('param'); 
+    let localID = GetArrayPointer(localParam); 
 
-    let localID = localStorage.getItem('param');  
-  
+    // let localID = localStorage.getItem('param');  
+//   need to have the details of each recipe first, then when you click the recipe ,the the computer knows where and what to get
     foodArray = JSON.parse(localStorage.getItem('foodArray'));  
 
-    document.getElementById("oneMenu").innerHTML = "The menu is: " + foodArray[localID - 1].Menu;
-    document.getElementById("oneFlavor").innerHTML = "The flavor is: " + foodArray[localID - 1].Flavor;
-    document.getElementById("oneType").innerHTML = "Type: " + foodArray[localID- 1].Type;
-    document.getElementById("oneRecipe").innerHTML = "The recipe is: " + foodArray[localID- 1].Recipe;
-    document.getElementById("oneTime").innerHTML = "the time is: " + foodArray[localID- 1].Time;
-
-
+    document.getElementById("oneMenu").innerHTML = "The menu is: " + foodArray[localID ].Menu;
+    document.getElementById("oneFlavor").innerHTML = "The flavor is: " + foodArray[localID ].Flavor;
+    document.getElementById("oneType").innerHTML = "Type: " + foodArray[localID].Type;
+    document.getElementById("oneRecipe").innerHTML = "The recipe is: " + foodArray[localID].Recipe;
+    document.getElementById("oneTime").innerHTML = "the time is: " + foodArray[localID].Time;
 });
 
 function createList() {
@@ -114,6 +109,19 @@ function createList() {
 });
 }
 
+function deleteMenu(which) {
+    let arrayPointer = GetArrayPointer(which);
+    foodArray.splice(arrayPointer, 1); 
+}
+
+
+function GetArrayPointer(localID) {
+    for (let i = 0; i < foodArray.length; i++) {
+        if (localID === foodArray[i].ID) {
+            return i;
+        }
+    }
+}
 function dynamicSort(property) {
     return function (a, b) {
         if (a[property] < b[property]) {
