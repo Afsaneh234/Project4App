@@ -40,7 +40,7 @@ let type = document.getElementById("selectVeg").value;
 let recipe = document.getElementById("selectRecipe").value;
 let time = document.getElementById("youTime").value;
 
-foodArray.push(new foodObject(foodArray.length+1,flavor, menu, type, recipe, time));
+foodArray.push(new foodObject(flavor, menu, type, recipe, time));
     document.location.href = "index.html#ListAll";
 });
 
@@ -101,7 +101,7 @@ function createList() {
     let myLi = document.createElement('li');
     myLi.classList.add('oneMenu'); 
     myLi.setAttribute("data-param", oneMenu.ID);
-    myLi.innerHTML = oneMenu.ID + ":  " + oneMenu.Flavor + "  " + oneMenu.Menu;
+    myLi.innerHTML = oneMenu.ID + "  " + oneMenu.Flavor + "  " + oneMenu.Menu;
     myRecipeListul.appendChild(myLi);
 });
 
