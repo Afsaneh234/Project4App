@@ -15,19 +15,28 @@ foodArray.push(new foodObject("Garlic", "Chinese", "Non-Veg", "Beef Noddles"));
 
 let selectedRecipe = "not selected";
 
+// document.getElementById("oneMenu").value = ID;
+// ID.style.display = "none";
+
 function toggle_visibility(id) {
-    let ul = document.getElementById('links');
+    // let ul = document.getElementById('links');
     let box = document.getElementById(id);
-    if(ul.style.display == 'none')
-    {
-        ul.style.display = 'block';
-        box.style.display = 'block';
+    let boxes =document.getElementsByClassName("box");
+
+    for(let i=0; i<boxes.length; i++) {
+        boxes[i].style.display ='none';
     }
-    else
-    {
-        ul.style.display = 'none';
-        box.style.display = 'block';
-    }
+    box.style.display ='block';
+    // if(ul.style.display == 'none')
+    // {
+    //     ul.style.display = 'block';
+    //     box.style.display = 'block';
+    // }
+    // else
+    // {
+    //     ul.style.display = 'none';
+    //     box.style.display = 'block';
+    // }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -97,11 +106,13 @@ function createList() {
    let myRecipeListul =document.getElementById("RecipeListul");
    myRecipeListul.innerHTML = "";
 
+   let i=1;
    foodArray.forEach(function (oneMenu,) {
     let myLi = document.createElement('li');
     myLi.classList.add('oneMenu'); 
     myLi.setAttribute("data-param", oneMenu.ID);
-    myLi.innerHTML = oneMenu.ID + "  " + oneMenu.Flavor + "  " + oneMenu.Menu;
+    myLi.innerHTML = i+". " + "  " + oneMenu.Flavor + "  " + oneMenu.Menu;
+    i++;
     myRecipeListul.appendChild(myLi);
 });
 
